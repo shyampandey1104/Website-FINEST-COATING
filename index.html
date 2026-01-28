@@ -4794,6 +4794,26 @@
                 font-size: 0.95rem;
             }
 
+            .client-card {
+                min-width: 260px;
+                margin-bottom: 10px;
+            }
+
+            .client-image {
+                height: 200px;
+            }
+
+            .clients-scroll-container {
+                gap: 1rem;
+                padding-bottom: 20px;
+            }
+
+            .scroll-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+
             .stat-card {
                 padding: 0.875rem 1rem;
                 min-width: 100px;
@@ -9547,7 +9567,7 @@ _Sent from FINEST COATING Website_`;
                 // Also update detail page hero image
                 const urinalsDetailImg = document.getElementById('urinals-detail-hero-img');
                 if (urinalsDetailImg) {
-                    urinalsDetailImg.src = enhanceImageUrl(centralizedImages.urinals[0]);
+                    // urinalsDetailImg.src = enhanceImageUrl(centralizedImages.urinals[0]); // Don't override hero with first gallery image
                 }
                 centralizedImages.urinals.forEach(url => {
                     addImageToUrinalsGallery(url, true);
