@@ -6400,19 +6400,25 @@
         async function fetchCentralizedImages() {
             console.log('Fetching images...');
 
-            /*
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/images`);
-                if (response.ok) {
-                    const data = await response.json();
-                    centralizedImages = { ...centralizedImages, ...data };
-                    console.log('✅ Loaded images from API:', centralizedImages);
-                    return true;
+            // Check if running on localhost (Local Server)
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+            if (isLocal) {
+                // Try API first if on Localhost
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/images`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        centralizedImages = { ...centralizedImages, ...data };
+                        console.log('✅ Loaded images from Local API:', centralizedImages);
+                        return true;
+                    }
+                } catch (error) {
+                    console.log('Local API not available, trying images.json...');
                 }
-            } catch (error) {
-                console.log('API not available, trying images.json...');
+            } else {
+                console.log('🌐 Static Hosting detected: Skipping API, loading images.json directly.');
             }
-            */
 
             // Fallback to images.json
             try {
