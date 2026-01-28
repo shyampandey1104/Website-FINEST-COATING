@@ -6300,7 +6300,15 @@
             leftAfter: [],
             rightBefore: [],
             rightAfter: [],
-            beforeAfterGallery: []
+            beforeAfterGallery: [],
+            process: [],
+            hero: [],
+            services: [],
+            industries: [],
+            warranty: [],
+            faq: [],
+            decorative: [],
+            bathroom: []
         };
 
         // ============ API FUNCTIONS ============
@@ -6927,7 +6935,98 @@ _Sent from FINEST COATING Website_`;
             loadSavedBathtubsImages();
             loadSavedUrinalsImages();
             loadSavedKitchenImages();
+
+            // Load all images from backend
+            loadProcessImages();
+            loadHeroImages();
+            loadServiceImages();
+            loadIndustryImages();
+            loadWarrantyImages();
+            loadFaqImages();
         });
+
+        // ============ LOAD ALL IMAGES FROM BACKEND ============
+
+        // Load Process Step Images
+        function loadProcessImages() {
+            if (centralizedImages.process && centralizedImages.process.length > 0) {
+                const processCards = document.querySelectorAll('.process-card .process-icon img');
+                processCards.forEach((img, index) => {
+                    if (centralizedImages.process[index]) {
+                        img.src = centralizedImages.process[index];
+                    }
+                });
+            }
+        }
+
+        // Load Hero Images
+        function loadHeroImages() {
+            if (centralizedImages.hero && centralizedImages.hero.length > 0) {
+                const heroImg = document.querySelector('.hero-image img');
+                if (heroImg) {
+                    heroImg.src = centralizedImages.hero[0];
+                }
+            }
+        }
+
+        // Load Service Card Images
+        function loadServiceImages() {
+            if (centralizedImages.services && centralizedImages.services.length > 0) {
+                // Bathtubs service card
+                const bathtubsImg = document.getElementById('bathtubs-main-img');
+                if (bathtubsImg && centralizedImages.services[0]) {
+                    bathtubsImg.src = centralizedImages.services[0];
+                }
+                // Kitchen service card
+                const kitchenImg = document.getElementById('kitchen-main-img');
+                if (kitchenImg && centralizedImages.services[1]) {
+                    kitchenImg.src = centralizedImages.services[1];
+                }
+            }
+            // Decorative service card
+            if (centralizedImages.decorative && centralizedImages.decorative.length > 0) {
+                const decorativeImg = document.getElementById('decorative-main-img');
+                if (decorativeImg) {
+                    decorativeImg.src = centralizedImages.decorative[0];
+                }
+            }
+        }
+
+        // Load Industry Images
+        function loadIndustryImages() {
+            if (centralizedImages.industries && centralizedImages.industries.length > 0) {
+                const industryCards = document.querySelectorAll('.industry-card img');
+                industryCards.forEach((img, index) => {
+                    if (centralizedImages.industries[index]) {
+                        img.src = centralizedImages.industries[index];
+                    }
+                });
+            }
+        }
+
+        // Load Warranty Images
+        function loadWarrantyImages() {
+            if (centralizedImages.warranty && centralizedImages.warranty.length > 0) {
+                const warrantyItems = document.querySelectorAll('.warranty-image-item img');
+                warrantyItems.forEach((img, index) => {
+                    if (centralizedImages.warranty[index]) {
+                        img.src = centralizedImages.warranty[index];
+                    }
+                });
+            }
+        }
+
+        // Load FAQ Images
+        function loadFaqImages() {
+            if (centralizedImages.faq && centralizedImages.faq.length > 0) {
+                const faqImages = document.querySelectorAll('.faq-image img');
+                faqImages.forEach((img, index) => {
+                    if (centralizedImages.faq[index]) {
+                        img.src = centralizedImages.faq[index];
+                    }
+                });
+            }
+        }
 
         // ============ BEFORE AFTER GALLERY - CLOUDINARY DYNAMIC LOADING ============
         const CLOUDINARY_CLOUD_NAME = 'dd2sbrcrr';

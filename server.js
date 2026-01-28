@@ -41,7 +41,16 @@ const CLOUDINARY_FOLDERS = {
     leftAfter: 'Finest Coating/More Images/Left After',
     rightBefore: 'Finest Coating/More Images/Right Before',
     rightAfter: 'Finest Coating/More Images/Right After',
-    beforeAfterGallery: 'Finest Coating/Before After Transformations'
+    beforeAfterGallery: 'Finest Coating/Before After Transformations',
+    // New categories for all images
+    process: 'Finest Coating/Process',
+    hero: 'Finest Coating/Hero',
+    services: 'Finest Coating/Services',
+    industries: 'Finest Coating/Industries We Serve',
+    warranty: 'Finest Coating/Warranty Conditions',
+    faq: 'Finest Coating/FAQ',
+    decorative: 'Finest Coating/Decorative',
+    bathroom: 'Finest Coating/Bathroom'
 };
 
 // Helper: Read images.json
@@ -61,7 +70,15 @@ function readImagesJson() {
             leftAfter: [],
             rightBefore: [],
             rightAfter: [],
-            beforeAfterGallery: []
+            beforeAfterGallery: [],
+            process: [],
+            hero: [],
+            services: [],
+            industries: [],
+            warranty: [],
+            faq: [],
+            decorative: [],
+            bathroom: []
         };
     }
 }
