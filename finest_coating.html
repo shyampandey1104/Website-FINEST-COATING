@@ -8709,7 +8709,15 @@ _Sent from FINEST COATING Website_`;
         });
 
         // ============ LOCAL IMAGE UPLOAD HANDLER ============
-        function handleLocalImageUpload(event, targetImageId) {
+        // Map targetImageId to category
+        const imageIdToCategoryMap = {
+            'bathtubs-main-img': 'bathtubs',
+            'urinals-main-img': 'urinals',
+            'kitchen-main-img': 'kitchen',
+            'decorative-main-img': 'decorative'
+        };
+
+        async function handleLocalImageUpload(event, targetImageId) {
             const file = event.target.files[0];
             if (!file) return;
 
@@ -8719,51 +8727,44 @@ _Sent from FINEST COATING Website_`;
                 return;
             }
 
-            // Validate file size (max 5MB)
-            const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+            // Validate file size (max 10MB)
+            const maxSize = 10 * 1024 * 1024;
             if (file.size > maxSize) {
-                alert('Image size should be less than 5MB');
+                alert('Image size should be less than 10MB');
                 return;
             }
 
-            // Read the file and display it
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const targetImg = document.getElementById(targetImageId);
-                if (targetImg) {
-                    const imageData = e.target.result;
+            const category = imageIdToCategoryMap[targetImageId] || 'services';
+            showNotification('⏳ Uploading to server...', 'info');
 
+            try {
+                // Upload to backend API
+                const result = await uploadImageViaAPI(file, category);
+                const imageUrl = result.url || result.secure_url;
+
+                const targetImg = document.getElementById(targetImageId);
+                if (targetImg && imageUrl) {
                     // Add a smooth transition effect
                     targetImg.style.opacity = '0';
                     setTimeout(() => {
-                        targetImg.src = imageData;
+                        targetImg.src = imageUrl;
                         targetImg.style.opacity = '1';
-
-                        // Save to localStorage
-                        try {
-                            localStorage.setItem('uploaded_img_' + targetImageId, imageData);
-                            console.log('Image saved to localStorage:', targetImageId);
-                        } catch (error) {
-                            console.error('Failed to save image:', error);
-                            showNotification('⚠️ Image too large to save permanently', 'error');
-                        }
 
                         // Show cancel button for uploaded image
                         const cancelBtn = targetImg.parentElement.querySelector('.image-cancel-btn');
                         if (cancelBtn) {
                             cancelBtn.setAttribute('data-visible', 'true');
-                            console.log('Cancel button shown for:', targetImageId);
                         }
 
-                        // Show success message
-                        showNotification('✅ Image uploaded & saved successfully!', 'success');
+                        showNotification('✅ Image uploaded to server successfully!', 'success');
                     }, 200);
                 }
-            };
-            reader.onerror = function () {
-                alert('Error reading file. Please try again.');
-            };
-            reader.readAsDataURL(file);
+            } catch (error) {
+                console.error('Upload error:', error);
+                showNotification('❌ Upload failed: ' + error.message, 'error');
+            }
+
+            event.target.value = '';
         }
 
         // ============ CANCEL IMAGE UPLOAD ============
