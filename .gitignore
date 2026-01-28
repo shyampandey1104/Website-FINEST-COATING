@@ -1,0 +1,5 @@
+node_modules/
+venv/
+cloudinary_env/
+.DS_Store
+*.log
