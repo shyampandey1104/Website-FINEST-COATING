@@ -9221,36 +9221,40 @@ _Sent from FINEST COATING Website_`;
             const slider = document.getElementById('healthcare-slider');
             const dotsContainer = document.getElementById('healthcare-slider-dots');
 
+            if (!slider) {
+                console.log('Healthcare slider not found');
+                return;
+            }
+
             // Apply AI enhancement to improve blur/low quality images
             const enhancedUrl = enhanceImageUrl(imageUrl);
 
-            if (slider) {
-                const existingSlides = slider.querySelectorAll('.buffing-slide');
-                const slideNumber = existingSlides.length + 1;
+            const existingSlides = slider.querySelectorAll('.buffing-slide');
+            const slideNumber = existingSlides.length + 1;
 
-                // Create new slide
-                const newSlide = document.createElement('div');
-                newSlide.className = 'buffing-slide';
-                newSlide.innerHTML = `
-                    <img src="${enhancedUrl}" alt="Healthcare Equipment ${slideNumber}">
-                    <div class="slide-caption">New Healthcare Work ${slideNumber}</div>
-                    <button class="slide-delete-btn" onclick="deleteSlideImage(this, 'healthcare')" title="Delete Image">✕</button>
-                `;
-                slider.appendChild(newSlide);
+            // Create new slide
+            const newSlide = document.createElement('div');
+            newSlide.className = 'buffing-slide';
+            newSlide.innerHTML = `
+                <img src="${enhancedUrl}" alt="Healthcare Equipment ${slideNumber}" onerror="this.style.display='none'">
+                <div class="slide-caption">Healthcare Work ${slideNumber}</div>
+                <button class="slide-delete-btn" onclick="deleteSlideImage(this, 'healthcare')" title="Delete Image">✕</button>
+            `;
+            slider.appendChild(newSlide);
 
-                // Add new dot
-                if (dotsContainer) {
-                    const newDot = document.createElement('span');
-                    newDot.className = 'dot';
-                    newDot.onclick = function () { setHealthcareSlide(slideNumber - 1); };
-                    dotsContainer.appendChild(newDot);
-                }
-
-                // Show the newly added slide
-                setTimeout(() => {
-                    setHealthcareSlide(slideNumber - 1);
-                }, 100);
+            // Add new dot
+            if (dotsContainer) {
+                const newDot = document.createElement('span');
+                newDot.className = 'dot';
+                newDot.onclick = function () { setHealthcareSlide(slideNumber - 1); };
+                dotsContainer.appendChild(newDot);
             }
+
+            // Show the newly added slide
+            setTimeout(() => {
+                setHealthcareSlide(slideNumber - 1);
+                console.log('Healthcare image added, showing slide:', slideNumber - 1);
+            }, 100);
         }
 
         // Load Healthcare images from centralized JSON only
