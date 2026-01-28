@@ -5637,7 +5637,7 @@
             </div>
         </section>
 
-        <!-- Clients & Projects Section -->
+        <!-- Industries Section -->
         <section class="clients-projects" id="industries">
             <div class="container">
                 <div class="section-header">
@@ -9234,6 +9234,14 @@ _Sent from FINEST COATING Website_`;
         // Load Buffing images from centralized JSON only
         function loadSavedBuffingImages() {
             if (centralizedImages.buffing && centralizedImages.buffing.length > 0) {
+                // Update main service card image
+                const mainImg = document.getElementById('buffing-main-img');
+                if (mainImg) mainImg.src = enhanceImageUrl(centralizedImages.buffing[0]);
+
+                // Update detail hero image
+                const heroImg = document.getElementById('buffing-detail-hero-img');
+                if (heroImg) heroImg.src = enhanceImageUrl(centralizedImages.buffing[0]);
+
                 centralizedImages.buffing.forEach(url => {
                     addImageToBuffingSlider(url, true);
                 });
@@ -9321,6 +9329,14 @@ _Sent from FINEST COATING Website_`;
         // Load Healthcare images from centralized JSON only
         function loadSavedHealthcareImages() {
             if (centralizedImages.healthcare && centralizedImages.healthcare.length > 0) {
+                // Update main service card image
+                const mainImg = document.getElementById('healthcare-main-img');
+                if (mainImg) mainImg.src = enhanceImageUrl(centralizedImages.healthcare[0]);
+
+                // Update detail hero image
+                const heroImg = document.getElementById('healthcare-detail-hero-img');
+                if (heroImg) heroImg.src = enhanceImageUrl(centralizedImages.healthcare[0]);
+
                 centralizedImages.healthcare.forEach(url => {
                     addImageToHealthcareGallery(url, true);
                 });
@@ -9403,6 +9419,14 @@ _Sent from FINEST COATING Website_`;
         // Load Industrial images from centralized JSON only
         function loadSavedIndustrialImages() {
             if (centralizedImages.industrial && centralizedImages.industrial.length > 0) {
+                // Update main service card image
+                const mainImg = document.getElementById('industrial-main-img');
+                if (mainImg) mainImg.src = enhanceImageUrl(centralizedImages.industrial[0]);
+
+                // Update detail hero image
+                const heroImg = document.getElementById('industrial-detail-hero-img');
+                if (heroImg) heroImg.src = enhanceImageUrl(centralizedImages.industrial[0]);
+
                 centralizedImages.industrial.forEach(url => {
                     addImageToIndustrialGallery(url, true);
                 });
@@ -9483,6 +9507,14 @@ _Sent from FINEST COATING Website_`;
 
         function loadSavedBathtubsImages() {
             if (centralizedImages.bathtubs && centralizedImages.bathtubs.length > 0) {
+                // Update main service card image
+                const mainImg = document.getElementById('bathtubs-main-img');
+                if (mainImg) mainImg.src = enhanceImageUrl(centralizedImages.bathtubs[0]);
+
+                // Update detail hero image
+                const heroImg = document.getElementById('bathtubs-detail-hero-img');
+                if (heroImg) heroImg.src = enhanceImageUrl(centralizedImages.bathtubs[0]);
+
                 centralizedImages.bathtubs.forEach(url => {
                     addImageToBathtubsGallery(url, true);
                 });
@@ -9560,15 +9592,15 @@ _Sent from FINEST COATING Website_`;
 
         function loadSavedUrinalsImages() {
             if (centralizedImages.urinals && centralizedImages.urinals.length > 0) {
-                // Update main service card image with first urinals image
+                // Update main service card image
                 const urinalsMainImg = document.getElementById('urinals-main-img');
                 if (urinalsMainImg) {
                     urinalsMainImg.src = enhanceImageUrl(centralizedImages.urinals[0]);
                 }
                 // Also update detail page hero image
-                const urinalsDetailImg = document.getElementById('urinals-detail-hero-img');
-                if (urinalsDetailImg) {
-                    // urinalsDetailImg.src = enhanceImageUrl(centralizedImages.urinals[0]); // Don't override hero with first gallery image
+                const heroImg = document.getElementById('urinals-detail-hero-img');
+                if (heroImg) {
+                    heroImg.src = enhanceImageUrl(centralizedImages.urinals[0]);
                 }
                 centralizedImages.urinals.forEach(url => {
                     addImageToUrinalsGallery(url, true);
@@ -9647,6 +9679,14 @@ _Sent from FINEST COATING Website_`;
 
         function loadSavedKitchenImages() {
             if (centralizedImages.kitchen && centralizedImages.kitchen.length > 0) {
+                // Update main service card image
+                const mainImg = document.getElementById('kitchen-main-img');
+                if (mainImg) mainImg.src = enhanceImageUrl(centralizedImages.kitchen[0]);
+
+                // Update detail hero image
+                const heroImg = document.getElementById('kitchen-detail-hero-img');
+                if (heroImg) heroImg.src = enhanceImageUrl(centralizedImages.kitchen[0]);
+
                 centralizedImages.kitchen.forEach(url => {
                     addImageToKitchenGallery(url, true);
                 });
@@ -9949,7 +9989,8 @@ _Sent from FINEST COATING Website_`;
             <div class="industrial-hero-section">
                 <div class="industrial-hero-image">
                     <img src="https://res.cloudinary.com/dd2sbrcrr/image/upload/v1768579596/Finest%20Coating/Services/pa2yspi8dftjllohpoef.png"
-                        alt="Bathtub Types" id="bathtubs-main-img" style="object-fit: contain; background: #f5f5f5;">
+                        alt="Bathtub Types" id="bathtubs-detail-hero-img"
+                        style="object-fit: contain; background: #f5f5f5;">
                     <div class="industrial-hero-badge">
                         <span>75-90%</span>
                         <small>Cost Savings</small>
@@ -10444,7 +10485,7 @@ _Sent from FINEST COATING Website_`;
             <div class="industrial-hero-section">
                 <div class="industrial-hero-image">
                     <img src="https://res.cloudinary.com/dd2sbrcrr/image/upload/v1768394168/Finest%20Coating/Buffing/buffing3.jpg"
-                        alt="Buffing & Polishing" id="buffing-main-img">
+                        alt="Buffing & Polishing" id="buffing-detail-hero-img">
                     <div class="industrial-hero-badge">
                         <span>Mirror</span>
                         <small>Finish</small>
@@ -10734,7 +10775,7 @@ _Sent from FINEST COATING Website_`;
             <div class="industrial-hero-section">
                 <div class="industrial-hero-image">
                     <img src="https://res.cloudinary.com/dd2sbrcrr/image/upload/v1768398450/Finest%20Coating/Industries%20We%20Serve/medical-machineries.png"
-                        alt="Medical & Industrial Equipment Refurbishment" id="industrial-main-img">
+                        alt="Medical & Industrial Equipment Refurbishment" id="industrial-detail-hero-img">
                     <div class="industrial-hero-badge">
                         <span>15+ Years</span>
                         <small>Experience</small>
@@ -11017,7 +11058,7 @@ _Sent from FINEST COATING Website_`;
             <div class="industrial-hero-section">
                 <div class="industrial-hero-image">
                     <img src="https://res.cloudinary.com/dd2sbrcrr/image/upload/v1768394294/Finest%20Coating/Industrial/1765747357583.png"
-                        alt="Healthcare Equipment" id="healthcare-main-img">
+                        alt="Healthcare Equipment" id="healthcare-detail-hero-img">
                     <div class="industrial-hero-badge">
                         <span>ISO</span>
                         <small>Certified</small>
@@ -11357,4 +11398,4 @@ box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
 </body>
 
 </html>
-<!-- Live Version: 1.0.7 -->
+<!-- Live Version: 1.0.8 -->
