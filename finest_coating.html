@@ -8885,7 +8885,7 @@ _Sent from FINEST COATING Website_`;
                 if (rect.width < 60 || rect.height < 60) return;
 
                 // Skip images in navigation/header (logo, etc.)
-                const navParent = img.closest('header, nav, .top-bar');
+                const navParent = img.closest('header, nav, .top-bar, #industries-scroll');
                 if (navParent) return;
 
                 // Check if image is inside a special container like .client-image, .gallery-item
